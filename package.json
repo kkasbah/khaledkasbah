@@ -1,0 +1,20 @@
+{
+  "name": "khaled-kasbah-profile",
+  "version": "1.0.0",
+  "description": "Personal website for Khaled M. Kasbah — Senior Infrastructure Leader",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.13"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

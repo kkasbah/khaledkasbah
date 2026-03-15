@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khaled M. Kasbah — Senior Infrastructure Leader</title>
+  <meta name="description" content="Senior Projects Manager & Infrastructure Leader with 17+ years delivering complex programs across Qatar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── Light Mode Variables ─── */
+    :root {
+      --bg:         #f7f6f2;
+      --surface:    #ffffff;
+      --navy:       #12243c;
+      --navy-mid:   #1e3a5f;
+      --heading:    #12243c;
+      --gold:       #b8963e;
+      --gold-lt:    #d4af6a;
+      --text:       #1c1c2a;
+      --muted:      #6c6c7e;
+      --border:     #e4e0d8;
+      --nav-bg:     rgba(247,246,242,0.88);
+      --icon-bg:    rgba(18,36,60,0.06);
+      --footer-bg:  #12243c;
+      --hero-grad:  rgba(18,36,60,0.06);
+      --radius:     4px;
+      --trans:      0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ─── Dark Mode Variables ─── */
+    html.dark {
+      --bg:         #0c0c11;
+      --surface:    #13131d;
+      --navy:       #2d5fa8;
+      --navy-mid:   #3a6fbd;
+      --heading:    #e4dfd6;
+      --gold:       #c9a84c;
+      --gold-lt:    #e0c070;
+      --text:       #d8d3c9;
+      --muted:      #7a7a95;
+      --border:     #24243a;
+      --nav-bg:     rgba(12,12,17,0.92);
+      --icon-bg:    rgba(255,255,255,0.06);
+      --footer-bg:  #07070c;
+      --hero-grad:  rgba(100,160,255,0.04);
+    }
+
+    /* ─── Colour-scheme for native inputs ─── */
+    html       { color-scheme: light; scroll-behavior: smooth; }
+    html.dark  { color-scheme: dark; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+      transition: background var(--trans), color var(--trans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      height: 64px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--trans), background var(--trans);
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    /* ─── Theme Toggle ─── */
+    .theme-toggle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--trans), background var(--trans), transform var(--trans), box-shadow var(--trans);
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+      border-color: var(--navy);
+      transform: scale(1.08);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--heading);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: opacity 0.2s, transform 0.4s;
+    }
+    /* Show sun in dark mode, moon in light mode */
+    .icon-moon { display: block; }
+    .icon-sun  { display: none; }
+    html.dark .icon-moon { display: none; }
+    html.dark .icon-sun  { display: block; }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--heading);
+      text-decoration: none;
+      transition: color var(--trans);
+    }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color var(--trans);
+    }
+    .nav-links a:hover { color: var(--heading); }
+
+    /* ─── Hero ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, var(--hero-grad) 0%, transparent 70%),
+        var(--bg);
+      transition: background var(--trans);
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      position: relative;
+      box-shadow: 0 0 0 6px var(--bg), 0 0 0 7px var(--border), 0 20px 40px rgba(18,36,60,0.22);
+      transition: background var(--trans), box-shadow var(--trans);
+    }
+    .avatar::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(var(--gold), var(--gold-lt), var(--gold));
+      z-index: -1;
+      opacity: 0.7;
+    }
+    .avatar span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--heading);
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+      transition: color var(--trans);
+    }
+
+    .hero-title {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 44px;
+    }
+    .hero-location svg { opacity: 0.5; }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: var(--radius);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all var(--trans);
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary {
+      background: var(--navy);
+      color: #fff;
+      border: 1px solid var(--navy);
+    }
+    .btn-primary:hover {
+      background: var(--navy-mid);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(18,36,60,0.25);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--heading);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--navy);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    /* ─── Stats Bar ─── */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-top: 72px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      transition: background var(--trans), border-color var(--trans);
+    }
+    .stat {
+      flex: 1;
+      max-width: 220px;
+      text-align: center;
+      padding: 32px 24px;
+      border-right: 1px solid var(--border);
+      transition: border-color var(--trans);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--heading);
+      line-height: 1;
+      display: block;
+      transition: color var(--trans);
+    }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* ─── Sections ─── */
+    section { padding: 96px 24px; transition: background var(--trans); }
+    .container { max-width: 860px; margin: 0 auto; }
+    .container-wide { max-width: 1060px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 400;
+      color: var(--heading);
+      line-height: 1.2;
+      margin-bottom: 32px;
+      transition: color var(--trans);
+    }
+
+    p { color: var(--muted); max-width: 68ch; transition: color var(--trans); }
+
+    /* ─── Summary ─── */
+    #summary { background: var(--surface); }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .summary-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: transform var(--trans), box-shadow var(--trans), background var(--trans), border-color var(--trans);
+    }
+    .summary-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+    .card-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: background var(--trans);
+    }
+    .card-icon svg { color: var(--gold-lt); }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--heading);
+      margin-bottom: 10px;
+      transition: color var(--trans);
+    }
+    .summary-card p { font-size: 14px; max-width: none; }
+
+    /* ─── Bio ─── */
+    #bio { background: var(--bg); }
+    .bio-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .bio-text p + p { margin-top: 20px; }
+
+    .bio-meta { display: flex; flex-direction: column; gap: 16px; }
+    .meta-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14px;
+      transition: background var(--trans), border-color var(--trans);
+    }
+    .meta-row-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--icon-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      transition: background var(--trans);
+    }
+    .meta-row strong { display: block; font-weight: 500; color: var(--heading); font-size: 13px; transition: color var(--trans); }
+    .meta-row span { color: var(--muted); font-size: 13px; }
+
+    /* ─── Expertise ─── */
+    #expertise { background: var(--surface); }
+    .expertise-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--border);
+      transition: border-color var(--trans), background var(--trans);
+    }
+    .expertise-item {
+      background: var(--bg);
+      padding: 28px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: background var(--trans);
+    }
+    .expertise-item:hover { background: var(--surface); }
+    .expertise-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+    .expertise-item h4 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--heading);
+      margin-bottom: 4px;
+      transition: color var(--trans);
+    }
+    .expertise-item p { font-size: 13px; max-width: none; }
+
+    /* ─── Contact ─── */
+    #contact { background: var(--bg); }
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-info p { margin-bottom: 32px; }
+    .contact-links { display: flex; flex-direction: column; gap: 14px; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none;
+      padding: 14px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: all var(--trans);
+    }
+    .contact-link:hover {
+      border-color: var(--navy);
+      transform: translateX(3px);
+    }
+    .contact-link-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--icon-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--trans);
+    }
+    .contact-link strong {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1px;
+    }
+    .contact-link span { color: var(--heading); transition: color var(--trans); }
+
+    /* ─── Form ─── */
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--trans), box-shadow var(--trans), background var(--trans), color var(--trans);
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); opacity: 0.6; }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(45,95,168,0.1);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+
+    .form-submit {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .form-note { font-size: 12px; color: var(--muted); }
+
+    #form-status {
+      display: none;
+      padding: 12px 18px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      background: var(--icon-bg);
+      color: var(--heading);
+      border: 1px solid var(--border);
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--footer-bg);
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      transition: background var(--trans);
+    }
+    footer strong { color: rgba(255,255,255,0.65); font-weight: 400; }
+
+    /* ─── Divider ─── */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 24px 0;
+    }
+
+    /* ─── Animations ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .stats-bar { flex-wrap: wrap; }
+      .stat { flex: none; width: 50%; border-right: none; border-bottom: 1px solid var(--border); }
+      .summary-grid { grid-template-columns: 1fr; }
+      .bio-body { grid-template-columns: 1fr; gap: 40px; }
+      .expertise-list { grid-template-columns: 1fr 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .expertise-list { grid-template-columns: 1fr; }
+      .stat { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <nav id="navbar">
+    <div class="nav-left">
+      <!-- Dark mode toggle (top left) -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <!-- Moon icon (shown in light mode) -->
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <!-- Sun icon (shown in dark mode) -->
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="#hero" class="nav-logo">KMK</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#bio">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section id="hero">
+    <div class="fade-up">
+      <div class="avatar">
+        <span>KK</span>
+      </div>
+      <p class="hero-eyebrow">Senior Infrastructure Leader</p>
+      <h1>Khaled M.<br>Kasbah</h1>
+      <p class="hero-title">Senior Projects Manager &amp; Civil Engineer</p>
+      <p class="hero-location">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Doha, Qatar
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </a>
+        <a href="#summary" class="btn btn-outline">View Profile</a>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar fade-up">
+      <div class="stat">
+        <span class="stat-number">17+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">35+</span>
+        <span class="stat-label">Projects Delivered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">3+</span>
+        <span class="stat-label">Billion QAR Managed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">ICE</span>
+        <span class="stat-label">Member 2024</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Executive Summary ─── -->
+  <section id="summary">
+    <div class="container-wide">
+      <div class="fade-up">
+        <span class="section-label">Executive Summary</span>
+        <h2>Driving National Infrastructure<br>Programs in Qatar</h2>
+        <p>Senior infrastructure professional with over 17 years of end-to-end project delivery experience across Qatar's most critical civil and drainage programs. Currently serving as Senior Projects Manager at Ashghal (Public Works Authority), leading PPP and Design &amp; Build contracts of strategic national importance.</p>
+      </div>
+
+      <div class="summary-grid fade-up">
+        <div class="summary-card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" color="#d4af6a"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>PPP &amp; Design-Build Leadership</h3>
+          <p>Client-side project lead for multi-hundred-million QAR PPP and D&B contracts — from early planning and design assurance through construction, commissioning, and operational handover.</p>
+        </div>
+
+        <div class="summary-card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" color="#d4af6a"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Drainage &amp; Wastewater Programs</h3>
+          <p>Deep technical expertise in large-scale drainage infrastructure, sewage treatment plants, and microtunneling — overseeing both strategic planning and hands-on engineering governance at the Ashghal TSE Section.</p>
+        </div>
+
+        <div class="summary-card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" color="#d4af6a"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Commercial &amp; Risk Oversight</h3>
+          <p>Full lifecycle commercial ownership — cost control, forecasting, financial exposure management, and risk mitigation across PPP frameworks and D&B delivery models.</p>
+        </div>
+
+        <div class="summary-card">
+          <div class="card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" color="#d4af6a"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Senior Stakeholder Management</h3>
+          <p>Principal Authority interface with Project Companies, consultants, contractors, O&amp;M teams, and internal departments — resolving critical issues and presenting strategic recommendations to executive committees.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Bio ─── -->
+  <section id="bio">
+    <div class="container">
+      <div class="bio-body">
+
+        <div class="bio-text fade-up">
+          <span class="section-label">About</span>
+          <h2>A Career Built on Complex Delivery</h2>
+          <div class="divider"></div>
+          <p>Khaled M. Kasbah is a Senior Civil &amp; Infrastructure Engineer based in Doha, Qatar, with a career spanning the full project lifecycle — from earthworks and utility networks to major PPP wastewater treatment plants and Design &amp; Build drainage programs.</p>
+          <p>Starting as a Site Engineer on Qatar Petroleum infrastructure projects in Mesaieed, Khaled progressed steadily into Section Engineer and Projects Manager roles, gaining deep expertise in roads, drainage, microtunneling, and complex stakeholder environments.</p>
+          <p>Today, he serves concurrently as Senior Projects Engineer at Ashghal and Projects &amp; Commercial Manager at Tunnels by Masters (TBM), bringing strategic leadership, technical authority, and commercial discipline to every program he governs.</p>
+          <p>A member of the Institution of Civil Engineers (ICE) and Order of Engineers, Khaled holds a BSc in Civil Engineering from Beirut Arab University and advanced management credentials.</p>
+        </div>
+
+        <div class="bio-meta fade-up">
+          <div class="meta-row">
+            <div class="meta-row-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--heading)" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div>
+              <strong>Current Role</strong>
+              <span>Senior Projects Manager — Ashghal, Qatar</span>
+            </div>
+          </div>
+          <div class="meta-row">
+            <div class="meta-row-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--heading)" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div>
+              <strong>Education</strong>
+              <span>BSc Civil Engineering — Beirut Arab University</span>
+            </div>
+          </div>
+          <div class="meta-row">
+            <div class="meta-row-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--heading)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div>
+              <strong>Languages</strong>
+              <span>Fluent in English &amp; Arabic</span>
+            </div>
+          </div>
+          <div class="meta-row">
+            <div class="meta-row-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--heading)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <strong>Memberships</strong>
+              <span>ICE Member (ID: 93811056) · Order of Engineers</span>
+            </div>
+          </div>
+          <div class="meta-row">
+            <div class="meta-row-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--heading)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <strong>Based in</strong>
+              <span>Doha, Qatar</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Expertise ─── -->
+  <section id="expertise">
+    <div class="container-wide">
+      <div class="fade-up">
+        <span class="section-label">Areas of Expertise</span>
+        <h2>Core Competencies</h2>
+      </div>
+      <div class="expertise-list fade-up">
+        <div class="expertise-item">
+          <div class="expertise-dot"></div>
+          <div><h4>Program &amp; Project Governance</h4><p>Leading high-value multi-project programs aligned to approved scope, schedule, and budget.</p></div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-dot"></div>
+          <div><h4>PPP Frameworks</h4><p>End-to-end lifecycle management of Public-Private Partnership infrastructure contracts.</p></div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-dot"></div>
+          <div><h4>Drainage &amp; Wastewater</h4><p>Design, delivery, and commissioning of sewage treatment plants and drainage networks.</p></div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-dot"></div>
+          <div><h4>Microtunneling &amp; Utilities</h4><p>Specialist delivery of microtunneling and underground utility infrastructure programs.</p></div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-dot"></div>
+          <div><h4>Design &amp; Technical Oversight</h4><p>Senior technical assurance for design submissions, engineering changes, and regulatory compliance.</p></div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-dot"></div>
+          <div><h4>Commercial &amp; Risk Management</h4><p>Cost control, forecasting, and strategic risk mitigation across complex delivery models.</p></div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-dot"></div>
+          <div><h4>Stakeholder &amp; Interface Leadership</h4><p>Principal client interface with JVs, consultants, contractors, and government bodies.</p></div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-dot"></div>
+          <div><h4>Executive Reporting</h4><p>Preparing strategic reports and recommendations for senior management and approval committees.</p></div>
+        </div>
+        <div class="expertise-item">
+          <div class="expertise-dot"></div>
+          <div><h4>Business Development</h4><p>Client relationship building, pricing strategy, and new contract identification in competitive markets.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ─── -->
+  <section id="contact">
+    <div class="container-wide">
+      <div class="contact-wrapper">
+
+        <div class="fade-up">
+          <span class="section-label">Contact</span>
+          <h2>Let's Connect</h2>
+          <div class="divider"></div>
+          <p>Open to strategic conversations, project collaborations, and professional enquiries. Reach out directly or use the form.</p>
+
+          <div class="contact-links" style="margin-top: 32px;">
+            <a href="mailto:khaledkasbah@outlook.com" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--heading)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <strong>Email</strong>
+                <span>khaledkasbah@outlook.com</span>
+              </div>
+            </a>
+            <a href="tel:+97433446081" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--heading)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.32 2 2 0 0 1 3.62 1.13h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.72a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+              </div>
+              <div>
+                <strong>Mobile</strong>
+                <span>+974 334 46081</span>
+              </div>
+            </a>
+            <div class="contact-link" style="cursor: default;">
+              <div class="contact-link-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--heading)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <strong>Location</strong>
+                <span>Doha, Qatar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-up">
+          <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">Full Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="femail">Email Address</label>
+                <input type="email" id="femail" name="femail" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fsubject">Subject</label>
+              <input type="text" id="fsubject" name="fsubject" placeholder="How can I help?" required />
+            </div>
+            <div class="form-group">
+              <label for="fmessage">Message</label>
+              <textarea id="fmessage" name="fmessage" placeholder="Your message…" required></textarea>
+            </div>
+            <div id="form-status"></div>
+            <div class="form-submit">
+              <span class="form-note">I typically respond within 24 hours.</span>
+              <button type="submit" class="btn btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <p>&copy; 2026 <strong>Khaled M. Kasbah</strong> &nbsp;·&nbsp; Senior Infrastructure Leader &nbsp;·&nbsp; Doha, Qatar</p>
+  </footer>
+
+  <!-- ─── Scripts ─── -->
+  <script>
+    /* ── Dark Mode ── */
+    const html    = document.documentElement;
+    const toggle  = document.getElementById('themeToggle');
+
+    // Apply saved preference or system preference on load (before paint)
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && prefersDark)) {
+      html.classList.add('dark');
+    }
+
+    toggle.addEventListener('click', () => {
+      const isDark = html.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    /* ── Nav scroll effect ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    /* ── Intersection Observer – fade-up ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const cards = entry.target.querySelectorAll('.summary-card, .expertise-item, .meta-row');
+          cards.forEach((card, i) => {
+            card.style.transitionDelay = `${i * 60}ms`;
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    /* ── Contact form ── */
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form    = e.target;
+      const btn     = form.querySelector('button[type="submit"]');
+      const name    = form.fname.value.trim();
+      const email   = form.femail.value.trim();
+      const subject = form.fsubject.value.trim();
+      const message = form.fmessage.value.trim();
+
+      if (!name || !email || !subject || !message) {
+        showStatus('error', 'Please fill in all fields before sending.');
+        return;
+      }
+
+      // Loading state
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const res  = await fetch('/api/contact', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ name, email, subject, message }),
+        });
+        const data = await res.json();
+
+        if (data.ok) {
+          showStatus('success', "✓ Message sent! I'll get back to you within 24 hours.");
+          form.reset();
+        } else {
+          showStatus('error', data.error || 'Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        showStatus('error', 'Network error. Please email directly: khaledkasbah@outlook.com');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+      }
+    }
+
+    function showStatus(type, msg) {
+      const status = document.getElementById('form-status');
+      status.textContent = msg;
+      status.style.display = 'block';
+      if (type === 'success') {
+        status.style.background = 'rgba(20,120,60,0.08)';
+        status.style.borderColor = 'rgba(20,120,60,0.25)';
+        status.style.color = '#176a38';
+      } else {
+        status.style.background = 'rgba(180,40,40,0.08)';
+        status.style.borderColor = 'rgba(180,40,40,0.25)';
+        status.style.color = '#c0392b';
+      }
+      if (type === 'success') setTimeout(() => { status.style.display = 'none'; }, 6000);
+    }
+  </script>
+</body>
+</html>
