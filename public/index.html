@@ -1002,14 +1002,14 @@
       btn.textContent = 'Sending…';
 
       try {
-        const res  = await fetch('/api/contact', {
+        const res  = await fetch('https://formspree.io/f/mdawlbve', {
           method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
           body:    JSON.stringify({ name, email, subject, message }),
         });
         const data = await res.json();
 
-        if (data.ok) {
+        if (res.ok) {
           showStatus('success', "✓ Message sent! I'll get back to you within 24 hours.");
           form.reset();
         } else {
