@@ -162,8 +162,8 @@
     }
 
     .avatar {
-      width: 110px;
-      height: 110px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       background: var(--navy);
       display: flex;
@@ -173,6 +173,7 @@
       position: relative;
       box-shadow: 0 0 0 6px var(--bg), 0 0 0 7px var(--border), 0 20px 40px rgba(18,36,60,0.22);
       transition: background var(--trans), box-shadow var(--trans);
+      overflow: hidden;
     }
     .avatar::after {
       content: '';
@@ -182,6 +183,13 @@
       background: conic-gradient(var(--gold), var(--gold-lt), var(--gold));
       z-index: -1;
       opacity: 0.7;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
     }
     .avatar span {
       font-family: 'Cormorant Garamond', serif;
@@ -649,7 +657,8 @@
   <section id="hero">
     <div class="fade-up">
       <div class="avatar">
-        <span>KK</span>
+        <img src="avatar.png" alt="Khaled M. Kasbah" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <span style="display:none">KK</span>
       </div>
       <p class="hero-eyebrow">Senior Infrastructure Leader</p>
       <h1>Khaled M.<br>Kasbah</h1>
@@ -745,7 +754,7 @@
           <p>Khaled M. Kasbah is a Senior Civil &amp; Infrastructure Engineer based in Doha, Qatar, with a career spanning the full project lifecycle — from earthworks and utility networks to major PPP wastewater treatment plants and Design &amp; Build drainage programs.</p>
           <p>Starting as a Site Engineer on Qatar Petroleum infrastructure projects in Mesaieed, Khaled progressed steadily into Section Engineer and Projects Manager roles, gaining deep expertise in roads, drainage, microtunneling, and complex stakeholder environments.</p>
           <p>Today, he serves concurrently as Senior Projects Engineer at Ashghal and Projects &amp; Commercial Manager at Tunnels by Masters (TBM), bringing strategic leadership, technical authority, and commercial discipline to every program he governs.</p>
-          <p>A member of the Institution of Civil Engineers (ICE) and Order of Engineers, Khaled holds a BSc in Civil Engineering from Beirut Arab University and advanced management credentials.</p>
+          <p>A member of the Institution of Civil Engineers (ICE), CP3P-F certified, Lebanese Order of Engineers, and Order of Engineers, Khaled holds a BSc in Civil Engineering from Beirut Arab University and advanced management credentials.</p>
         </div>
 
         <div class="bio-meta fade-up">
@@ -782,7 +791,7 @@
             </div>
             <div>
               <strong>Memberships</strong>
-              <span>ICE Member (ID: 93811056) · Order of Engineers</span>
+              <span>ICE Member (ID: 93811056) · CP3P-F · Lebanese Order of Engineers · Order of Engineers</span>
             </div>
           </div>
           <div class="meta-row">
